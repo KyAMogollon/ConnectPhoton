@@ -6,8 +6,7 @@ using Photon.Realtime;
 
 public class RoomListingsMenu : MonoBehaviourPunCallbacks
 {
-    [SerializeField]
-    private Transform _content;
+     
     [SerializeField]
     private RoomListing _roomListing;
 
@@ -15,11 +14,21 @@ public class RoomListingsMenu : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        foreach(RoomInfo info in roomList)
+        DestroyAllRoom();
+
+        foreach (RoomInfo info in roomList)
         {
-            RoomListing listing = Instantiate(_roomListing,_content);
+            RoomListing listing = Instantiate(_roomListing,transform);
             if (listing != null)
                 listing.SetRoomInfo(info);
+        }
+    }
+    public void DestroyAllRoom()
+    {
+        Transform[] allChild = transform.GetComponentsInChildren<Transform>();
+        foreach (var item in allChild)
+        {
+            Destroy(item.gameObject);
         }
     }
 }

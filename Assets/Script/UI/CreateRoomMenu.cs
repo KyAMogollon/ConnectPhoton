@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
+using TMPro;
 
 public class CreateRoomMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    private Text _roomName;
+    private TMP_Text _roomName;
     
     public void OnClick_CreateRoom()
     {

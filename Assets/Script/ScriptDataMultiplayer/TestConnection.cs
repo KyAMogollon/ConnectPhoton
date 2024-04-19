@@ -3,34 +3,125 @@ using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
+using TMPro;
+using UnityEngine.UI;
+
+
 
 public class TestConnection : MonoBehaviourPunCallbacks
 {
+    //[SerializeField]
+    //private TextMeshProUGUI versionGame;
+
+    //[SerializeField]
+    //private LobbyMenu _LobbyMenu;
+
+    //[SerializeField]
+    //private CurrentRoomMenu _CurrentRoomMenu;
+
+    //[SerializeField]
+    //private CreateRoomMenu _CreateRoomMenu;
+
+    //[SerializeField]
+    //private PlayerListingsMenu _PlayerListingsMenu;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Connecting to server");
-        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+        print("Connecting to server.");
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
+        //versionGame.text = "Version: " + MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
     }
+
+    #region Connect
     public override void OnConnectedToMaster()
     {
-        Debug.Log("Connected to Server");
-        Debug.Log("my nickanme is " + PhotonNetwork.LocalPlayer.NickName, this);
-
+        print("Connected to server.");
         if (!PhotonNetwork.InLobby)
             PhotonNetwork.JoinLobby();
     }
+    //public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    //{
+    //    _LobbyMenu._RoomListingsMenu.SetListRoom(roomList);
+    //}
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log("Disconnected from server reason " + cause.ToString());
+        print("Disconnect from server for reason " + cause.ToString());
     }
+    #endregion
 
-    public override void OnJoinedLobby()
+    #region Player
+    public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.Log("Joined Lobby");
+        //_CurrentRoomMenu._PlayerListingsMenu.AddPlayerListing(newPlayer);
+    }
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        //_CurrentRoomMenu._PlayerListingsMenu.DestroyPlayer(otherPlayer);
+    }
+    public override void OnLeftRoom()
+    {
+        //_CurrentRoomMenu._PlayerListingsMenu.DestroyPlayerListing();
+    }
+    #endregion
+
+    #region Room
+    public override void OnJoinedRoom()
+    {
+        //    _LobbyMenu._RoomListingsMenu.DestroyListRoom();
+
+        //    _CurrentRoomMenu._PlayerListingsMenu.GetCurrentRoomPlayers(PhotonNetwork.CurrentRoom.Players);
+
+        //    _CurrentRoomMenu._roomName.text = "Nombre de la Sala: " + PhotonNetwork.CurrentRoom.Name + "\n" +
+        //                                      "Nombre del creador: " + PhotonNetwork.NickName + "\n" +
+        //                                      "Maximo Jugadores (" + (int)PhotonNetwork.CurrentRoom.MaxPlayers + ")";
+
+        //    UIManager.instance.ActivateComponent(ComponentUI.CurrentRoom);
+    }
+    public override void OnCreatedRoom()
+    {
+        //_CurrentRoomMenu._roomName.text = "Nombre de la Sala: " + PhotonNetwork.CurrentRoom.Name + "\n" +
+        //                                  "Nombre del creador: " + PhotonNetwork.NickName + "\n" +
+        //                                  "Maximo Jugadores (" + (int)PhotonNetwork.CurrentRoom.MaxPlayers + ")";
+    }
+    public void OnClickCreateRoom()
+    {
+        if (!PhotonNetwork.IsConnected) return;
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = 10;// (byte)int.Parse(_CreateRoomMenu._countPlayer.text);
+        //PhotonNetwork.JoinOrCreateRoom(_CreateRoomMenu._roomName.text, options, TypedLobby.Default);
+    }
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        Debug.Log("OnCreateRoomFailed: " + message);
+    }
+    #endregion
+
+    public void OnClickComenzar()
+    {
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    foreach (var item in _PlayerListingsMenu._listings)
+        //    {
+        //        if (item.Player != PhotonNetwork.LocalPlayer)
+        //        {
+        //            if (!item.IsReady)
+        //                return;
+        //        }
+        //    }
+        //    PhotonNetwork.LoadLevel(1);
+        //}
+
+
     }
 
+    public void OnExitGame()
+    {
+        PhotonNetwork.LeaveLobby();
+        Application.Quit();
+    }
 }
 
