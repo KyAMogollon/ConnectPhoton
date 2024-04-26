@@ -21,7 +21,7 @@ public class CurrentLobby : MonoBehaviour
     }
     public void OnEnable()
     {
-        sala.text = roomMenu.GetNameRoom().text;
-        nickname.text=playerMenu.GetNickName().text;
+        sala.text = "RoomName: " + roomMenu.GetNameRoom().text;
+        nickname.text="NickName: " + playerMenu.GetNickName().text;
     }
 }
