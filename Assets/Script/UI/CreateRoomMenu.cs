@@ -17,12 +17,17 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
             return;
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom(_roomName.text,options,TypedLobby.Default);
+        PhotonNetwork.JoinOrCreateRoom(_roomName.text, options, TypedLobby.Default);
+    }
+    public TMP_Text GetNameRoom()
+    {
+        return _roomName;
     }
 
     public override void OnCreatedRoom()
     {
         Debug.Log("Create Room succesfully", this);
+        UIManager.instance.ActivateComponent(ComponentUI.CurrentRoom);
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

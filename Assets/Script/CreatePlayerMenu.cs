@@ -16,4 +16,8 @@ public class CreatePlayerMenu : MonoBehaviour
         PhotonNetwork.NickName = _InputplayerName.text;
         UIManager.instance.ActivateComponent(ComponentUI.MenuLobby);
     }
+    public TMP_Text GetNickName()
+    {
+        return _InputplayerName;
+    }
 }
