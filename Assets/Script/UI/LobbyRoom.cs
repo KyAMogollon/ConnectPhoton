@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class LobbyRoom : MonoBehaviour
 {
@@ -24,3 +26,6 @@ public class LobbyRoom : MonoBehaviour
         ChangeAvatar.instance.Move(-1);
     }
 }
+
+
+

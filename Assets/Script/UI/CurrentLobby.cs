@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 public class CurrentLobby : MonoBehaviour
 {
     public TMP_Text sala;
     public TMP_Text nickname;
-    [SerializeField] CreateRoomMenu roomMenu;
-    [SerializeField] CreatePlayerMenu playerMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class CurrentLobby : MonoBehaviour
     }
     public void OnEnable()
     {
-        sala.text = "RoomName: " + roomMenu.GetNameRoom().text;
-        nickname.text="NickName: " + playerMenu.GetNickName().text;
+        sala.text = "RoomName: " + PhotonNetwork.CurrentRoom.Name;
+        nickname.text="NickName: " + PhotonNetwork.NickName;
     }
 }
