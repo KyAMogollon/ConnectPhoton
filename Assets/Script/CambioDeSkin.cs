@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class CambioDeSkin : MonoBehaviour
 {
-    [SerializeField] GameObject[] listaDeSkins = new GameObject[1];
-    int index;
-
+    public GameObject[] listaDeSkins = new GameObject[1];
+    public int index;
+    public SOSkin Guardado;
+    private void Start()
+    {
+        Guardado.Skin = listaDeSkins[index];
+    }
 
     public void CambiarSkinD()
     {
@@ -18,6 +22,7 @@ public class CambioDeSkin : MonoBehaviour
 
         }
         listaDeSkins[index].SetActive(true);
+        Guardado.Skin = listaDeSkins[index];
     }
     public void CambiarSkinI()
     {
@@ -28,6 +33,7 @@ public class CambioDeSkin : MonoBehaviour
             index = listaDeSkins.Length-1;
         }
         listaDeSkins[index].SetActive(true);
+        Guardado.Skin = listaDeSkins[index];
     }
 
 }

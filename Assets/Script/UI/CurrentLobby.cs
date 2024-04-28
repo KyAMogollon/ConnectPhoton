@@ -9,21 +9,22 @@ public class CurrentLobby : MonoBehaviour
 {
     public TMP_Text sala;
     public TMP_Text nickname;
+    [SerializeField] SOSkin elGuardado;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void OnEnable()
     {
         sala.text = "RoomName: " + PhotonNetwork.CurrentRoom.Name;
         nickname.text="NickName: " + PhotonNetwork.NickName;
+        
+        
     }
+
+    private void Start()
+    {
+        GameObject MuestraDeSkin = Instantiate(elGuardado.Skin, transform);
+
+        //MuestraDeSkin = Instantiate(laSkin, transform);
+        MuestraDeSkin.transform.localPosition = new Vector3(-535, -266, -548);
+    }
+
 }
