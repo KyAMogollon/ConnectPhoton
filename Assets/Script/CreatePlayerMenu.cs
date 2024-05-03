@@ -10,12 +10,15 @@ public class CreatePlayerMenu : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _InputplayerName;
     [SerializeField] private SOSkin Guardado;
-    
+    [SerializeField] private CharacterSelectionSO saved;
+
     public void SetNickName()
     {
         PhotonNetwork.NickName = _InputplayerName.text;
         UIManager.instance.ActivateComponent(ComponentUI.MenuLobby);
+        saved.name = _InputplayerName.text;
         Guardado.name = _InputplayerName.text;
+
     }
     public TMP_Text GetNickName()
     {

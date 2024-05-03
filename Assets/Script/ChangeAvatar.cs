@@ -30,7 +30,7 @@ public class ChangeAvatar : MonoBehaviour
             return _instance;
         }
     }
-    [SerializeField] private List<CharacterComponent> ListComponents = new List<CharacterComponent>();
+    [SerializeField] public List<CharacterComponent> ListComponents = new List<CharacterComponent>();
     [SerializeField] CharacterComponent InitComp;
     public int Index;
     public void ActivateComponent(ComponentCh Type)

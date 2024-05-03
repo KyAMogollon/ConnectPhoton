@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
-using UnityEngine;
 public class CurrentLobby : MonoBehaviour
 {
     public TMP_Text sala;
