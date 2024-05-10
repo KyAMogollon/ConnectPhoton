@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de42b848b298fd94aaaf38d71ea355ee, type: 3}
-  m_Name: "adhair\u200B"
+  m_Name: SaveCharacter
   m_EditorClassIdentifier: 
   currentType: 2
   player: {fileID: 0}

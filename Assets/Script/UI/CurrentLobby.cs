@@ -4,11 +4,13 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class CurrentLobby : MonoBehaviour
 {
     public TMP_Text sala;
     public TMP_Text nickname;
-    [SerializeField] SOSkin elGuardado;
+    //[SerializeField] SOSkin elGuardado;
+    //[SerializeField] CharacterSelectionSO saved;
 
     public void OnEnable()
     {
@@ -17,13 +19,16 @@ public class CurrentLobby : MonoBehaviour
         
         
     }
-
-    private void Start()
+    public void OnClickPlay()
     {
-        GameObject MuestraDeSkin = Instantiate(elGuardado.Skin, transform);
-
-        //MuestraDeSkin = Instantiate(laSkin, transform);
-        MuestraDeSkin.transform.localPosition = new Vector3(-535, -266, -548);
+        SceneManager.LoadScene("Sand");
     }
+    //private void Start()
+    //{
+    //    GameObject MuestraDeSkin = Instantiate(elGuardado.Skin, transform);
+
+    //    //MuestraDeSkin = Instantiate(laSkin, transform);
+    //    MuestraDeSkin.transform.localPosition = new Vector3(-535, -266, -548);
+    //}
 
 }

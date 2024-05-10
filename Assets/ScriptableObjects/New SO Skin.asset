@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed18c3388574b7a4887b3c0ab9a27cbf, type: 3}
-  m_Name: "Adhair\u200B"
+  m_Name: New SO Skin
   m_EditorClassIdentifier: 
   Skin: {fileID: 0}
-  namePlayer: 
+  namePlayer: "KyA\u200B"
